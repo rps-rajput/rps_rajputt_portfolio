@@ -166,7 +166,7 @@ const Home = () => {
               <p className="text-gray-700 mb-8 max-w-3xl mx-auto leading-relaxed">
                 Leading automation initiatives across multiple projects including Daikin MatchupXpress Tool, 
                 Daikin SplitXpress, Daikin FIT, and Code Ninjas Marketing Website. Improved test efficiency 
-                by 40% through comprehensive automation frameworks.
+                by 40-50% through comprehensive automation frameworks.
               </p>
               <Link
                 to="/experience/softway-solution"
@@ -180,8 +180,8 @@ const Home = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-16 bg-gray-900 text-white">
+      {/* CTA Section near footer */}
+      {/* <section className="py-16 bg-gray-900 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold mb-4">Ready to Work Together?</h2>
           <p className="text-xl text-gray-300 mb-8">
@@ -195,7 +195,7 @@ const Home = () => {
             <ArrowRight className="w-5 h-5 ml-2" />
           </Link>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 };
