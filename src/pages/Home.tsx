@@ -1,13 +1,13 @@
 import React from 'react';
-import { ArrowRight, Download, Github, Linkedin, Mail, MapPin, Calendar, Trophy } from 'lucide-react';
+import { ArrowRight, Download, Github, Linkedin, Mail, MapPin,Shield, Calendar, Trophy, Cloud } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Home = () => {
   const highlights = [
     { icon: Trophy, text: '4+ Years Experience', color: 'text-blue-600' },
-    { icon: Calendar, text: 'Automation & QA Specialist', color: 'text-orange-600' },
+    { icon: Shield, text: 'Automation & QA Specialist', color: 'text-orange-600' },
     { icon: Calendar, text: 'Process Improvement', color: 'text-teal-600' },
-    { icon: Calendar, text: 'Cloud Certified', color: 'text-purple-600' },
+    { icon: Cloud, text: 'Cloud Certified', color: 'text-purple-600' },
   ];
 
   return (
@@ -71,6 +71,7 @@ const Home = () => {
                 >
                   <Github className="w-6 h-6" />
                 </a>
+                
                 <div className="flex items-center text-gray-600 p-2 -m-2">
                   <MapPin className="w-4 h-4 mr-2" />
                   <span>India</span>
