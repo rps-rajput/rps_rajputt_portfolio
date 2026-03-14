@@ -10,6 +10,7 @@ import SoftwayExperience from './pages/experiences/SoftwayExperience';
 import WiseAppExperience from './pages/experiences/WiseAppExperience';
 import SaleAssistExperience from './pages/experiences/SaleAssistExperience';
 import Projects from './pages/Projects';
+import ProductDetail from './pages/ProductDetail';
 import Skills from './pages/Skills';
 import Certifications from './pages/Certifications';
 import Contact from './pages/Contact';
@@ -29,6 +30,8 @@ function App() {
             <Route path="/experience/wise-app" element={<WiseAppExperience />} />
             <Route path="/experience/saleassist" element={<SaleAssistExperience />} />
             <Route path="/projects" element={<Projects />} />
+            <Route path="/products" element={<Projects />} />
+            <Route path="/products/:slug" element={<ProductDetail />} />
             <Route path="/skills" element={<Skills />} />
             <Route path="/certifications" element={<Certifications />} />
             <Route path="/contact" element={<Contact />} />

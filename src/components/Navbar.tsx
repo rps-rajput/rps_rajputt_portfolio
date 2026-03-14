@@ -10,13 +10,16 @@ const Navbar = () => {
     { name: 'Home', href: '/', icon: User },
     { name: 'About', href: '/about', icon: User },
     { name: 'Experience', href: '/experience', icon: Briefcase },
-    { name: 'Projects', href: '/projects', icon: FolderOpen },
+    { name: 'Products', href: '/products', icon: FolderOpen },
     { name: 'Skills', href: '/skills', icon: Target },
     { name: 'Certifications', href: '/certifications', icon: Award },
     { name: 'Contact', href: '/contact', icon: Mail },
   ];
 
-  const isActive = (path: string) => location.pathname === path;
+  const isActive = (path: string) =>
+    path === '/products'
+      ? location.pathname === '/products' || location.pathname.startsWith('/products/')
+      : location.pathname === path;
 
   return (
     <nav className="bg-white shadow-lg sticky top-0 z-50">
