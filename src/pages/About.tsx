@@ -1,5 +1,6 @@
 import React from 'react';
 import { Award, Calendar, Target, Users, Zap, CheckCircle } from 'lucide-react';
+import { getExperienceDisplay, getExperienceYearsForCounter } from '../utils/experience';
 
 const About = () => {
   const achievements = [
@@ -47,7 +48,7 @@ const About = () => {
               <div>
                 <h2 className="text-2xl font-bold text-gray-900 mb-4">My Journey</h2>
                 <p className="text-gray-700 leading-relaxed mb-4">
-                  With over 4 years of experience in Quality Assurance, I've had the privilege of working 
+                  With over {getExperienceYearsForCounter()} years of experience in Quality Assurance, I've had the privilege of working 
                   across diverse environments - from dynamic startups to established enterprises. My career 
                   began at SaleAssist.ai, where I established the foundation of QA processes from scratch.
                 </p>
@@ -109,7 +110,7 @@ const About = () => {
             </div>
             <div className="text-center">
               <Calendar className="w-8 h-8 text-blue-400 mx-auto mb-2" />
-              <p className="text-sm text-gray-400">4+ Years</p>
+              <p className="text-sm text-gray-400">{getExperienceDisplay()} Years</p>
             </div>
             <div className="text-center">
               <Target className="w-8 h-8 text-green-400 mx-auto mb-2" />

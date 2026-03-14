@@ -1,6 +1,6 @@
-import React from 'react';
-import { Calendar, MapPin, ArrowRight, Building, Users, Trophy } from 'lucide-react';
+import { Calendar, MapPin, ArrowRight, Building, Trophy } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { getExperienceDisplay, getExperienceYearsLabel } from '../utils/experience';
 
 const Experience = () => {
   const experiences = [
@@ -18,7 +18,7 @@ const Experience = () => {
         'Implemented comprehensive API testing strategies',
         'Established DevOps integration practices'
       ],
-      technologies: ['Cypress', 'Playwright', 'Postman', 'JMeter', 'Azure DevOps', 'AWS', 'GitLab', "Jira", "Confluence","Git/Github", "AI Tools"],
+      technologies: ['Cypress', 'Playwright', 'Postman', 'JMeter', 'Azure DevOps', 'AWS', 'GitLab', 'Jira', 'Confluence', 'Git/Github', 'AI Tools'],
       description: 'Leading comprehensive QA initiatives across multiple high-impact projects including Daikin enterprise tools and Code Ninjas marketing platform.',
       gradient: 'from-blue-500 to-blue-600'
     },
@@ -67,7 +67,7 @@ const Experience = () => {
         <div className="text-center mb-16">
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">Professional Experience</h1>
           <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
-            4+ years of progressive experience in Quality Assurance across diverse industries and environments
+            {getExperienceYearsLabel()} of progressive experience in Quality Assurance across diverse industries and environments
           </p>
         </div>
 
@@ -76,7 +76,7 @@ const Experience = () => {
           {/* Timeline line */}
           <div className="absolute left-6 sm:left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-500 via-teal-500 to-purple-500"></div>
 
-          {experiences.map((exp, index) => (
+          {experiences.map((exp) => (
             <div key={exp.id} className="relative mb-16 last:mb-0">
               {/* Timeline dot */}
               <div className="absolute left-6 w-4 h-4 bg-white rounded-full border-4 border-blue-500 z-10"></div>
@@ -168,7 +168,7 @@ const Experience = () => {
           <h2 className="text-3xl font-bold text-center mb-12">Career Summary</h2>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
             <div>
-              <div className="text-4xl font-bold text-blue-400 mb-2">4+</div>
+              <div className="text-4xl font-bold text-blue-400 mb-2">{getExperienceDisplay()}</div>
               <div className="text-gray-300">Years Experience</div>
             </div>
             <div>

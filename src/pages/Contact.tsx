@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { Mail, Phone, MapPin, Linkedin, Github, Send, CheckCircle, AlertCircle, Twitter, Instagram } from 'lucide-react';
 import emailjs from '@emailjs/browser';
+import { getExperienceYearsLabel } from '../utils/experience';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -171,7 +172,7 @@ const Contact = () => {
             <div className="mt-12 bg-gradient-to-br from-blue-50 to-teal-50 rounded-xl p-6">
               <h3 className="text-lg font-bold text-gray-900 mb-4">Professional Summary</h3>
               <ul className="space-y-2 text-gray-700">
-                <li>• 4+ years of QA engineering experience</li>
+                <li>• {getExperienceYearsLabel()} of QA engineering experience</li>
                 <li>• Specialized in automation, API scripting and testing</li>
                 <li>• Test case creation, management and execution</li>
                 <li>• AWS and Azure certified professional</li>

@@ -1,12 +1,16 @@
-import { ArrowRight, Download, Github, Linkedin, Mail, MapPin, Shield, Calendar, Trophy, Cloud, CheckCircle, Target, Zap, Users, Building, ExternalLink, TestTube, Code, Database, GitBranch, Brain, Globe, BarChart, FileText } from 'lucide-react';
+import { ArrowRight, Download, Github, Linkedin, Mail, MapPin, Shield, Calendar, Trophy, Cloud, CheckCircle, Target, Zap, Users, Building, ExternalLink, Brain } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import SkillsSection from '../components/SkillsSection';
+import { getExperienceDisplay, getExperienceYearsLabel, getExperienceYearsForCounter } from '../utils/experience';
 
 const Home = () => {
+  const expDisplay = getExperienceDisplay();
   const highlights = [
-    { icon: Trophy, text: '4+ Years Experience', color: 'text-blue-600' },
+    { icon: Trophy, text: `${expDisplay} Years Experience`, color: 'text-blue-600' },
     { icon: Shield, text: 'Automation & QA Specialist', color: 'text-orange-600' },
     { icon: Calendar, text: 'Process Improvement', color: 'text-teal-600' },
     { icon: Cloud, text: 'Cloud Certified', color: 'text-purple-600' },
+    { icon: Brain, text: 'AI-Powered QA & Tools', color: 'text-violet-600' },
   ];
 
   const achievements = [
@@ -84,133 +88,53 @@ const Home = () => {
     }
   ];
 
-  const projects = [
+  // Products from Ruviq (driven by shared data — brand colors + real icons)
+  const ruviqProducts = [
     {
-      name: 'PreftestPro',
-      description: 'AI-powered API performance analyzer that provides intelligent insights and recommendations for API optimization.',
-      keyFeatures: [
-        'Real-time API performance monitoring',
-        'AI-powered bottleneck detection',
-        'Comprehensive performance analytics',
-        'Automated optimization recommendations'
-      ],
-      technologies: ['Python', 'FastAPI', 'React', 'Replit', 'Cursor AI'],
-      github: 'https://github.com/rps-rajput/Preftestpro',
-      live: 'https://perftestpro.created.app/',
-      icon: BarChart,
-      screenshot: '/PerfTestPro.jpg',
-      gradient: 'from-blue-500 to-purple-600'
+      name: 'APIQuill',
+      slug: 'apiquill',
+      description: 'Convert Postman collections to professional HTML & PDF API documentation instantly. No backend, no login.',
+      badge: 'API Documentation · Free',
+      color: '#3b82f6',
+      colorEnd: '#7c3aed',
+      btnGradient: 'linear-gradient(135deg, #3b82f6, #7c3aed)',
+      icon: '/products/APIQuillicons.png',
+      tags: ['React', 'TypeScript', 'Browser-Native'],
     },
     {
-      name: 'API Verify Toolkit',
-      description: 'Postman-to-HTML/PDF converter that transforms API documentation into beautiful, shareable formats.',
-      keyFeatures: [
-        'Postman collection import and parsing',
-        'Beautiful HTML documentation generation',
-        'Professional PDF export capabilities',
-        'Interactive API explorer interface'
-      ],
-      technologies: ['Node.js', 'React', 'Loveable', 'TRAE AI', 'Bootstrap'],
-      github: 'https://github.com/rps-rajput/api-verify-toolkit',
-      live: 'https://api-documentation.lovable.app/',
-      icon: FileText,
-      screenshot: '/API_Documentation.jpg',
-      gradient: 'from-emerald-400 to-cyan-500'
+      name: 'AutoCaseGen',
+      slug: 'autocasegen',
+      description: 'Record browser interactions via Chrome extension and generate production-ready Playwright or Cypress test code.',
+      badge: 'Chrome Extension · Test Automation',
+      color: '#19e6d5',
+      colorEnd: '#0891b2',
+      btnGradient: 'linear-gradient(135deg, #19e6d5, #0891b2)',
+      icon: '/products/autoCaseGenIcon.png',
+      tags: ['Chrome Extension', 'Playwright', 'Cypress'],
     },
     {
-      name: 'Personal Portfolio Website',
-      description: 'Modern, responsive portfolio website built using AI-powered development tools and cutting-edge technologies.',
-      keyFeatures: [
-        'Responsive design optimized for all devices',
-        'Interactive contact form with EmailJS integration',
-        'Professional certifications showcase',
-        'AI-enhanced development workflow'
-      ],
-      technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Vite', 'EmailJS'],
-      github: 'https://github.com/rps-rajput/rps_rajputt_portfolio',
-      live: 'https://rps-portfolio.netlify.app/',
-      icon: Globe,
-      screenshot: '/Portfolio.jpg',
-      gradient: 'from-blue-500 to-purple-600'
-    }
+      name: 'PerfTestFlow',
+      slug: 'perftestflow',
+      description: 'Transform raw API performance data into interactive visual insights. Includes a Chrome extension to record real traffic.',
+      badge: 'Performance Testing · Web App',
+      color: '#7C3AED',
+      colorEnd: '#5b21b6',
+      btnGradient: 'linear-gradient(135deg, #7C3AED, #5b21b6)',
+      icon: '/products/perfTestFlowicon.png',
+      tags: ['Python', 'Streamlit', 'Chrome Extension'],
+    },
+    {
+      name: 'Qualixy AI',
+      slug: 'qualixy',
+      description: 'AI-powered Chrome Extension that converts screenshots and voice instructions into structured QA test cases.',
+      badge: 'AI Tool · Chrome Extension',
+      color: '#0d9488',
+      colorEnd: '#1a3a5c',
+      btnGradient: 'linear-gradient(135deg, #0d9488, #1a3a5c)',
+      icon: '/products/qualixyIcon.png',
+      tags: ['AI/LLM', 'Chrome Extension', 'QA'],
+    },
   ];
-
-  const skillCategories = [
-    {
-      icon: TestTube,
-      title: 'Automation Tools',
-      color: 'from-blue-500 to-blue-600',
-      skills: [
-        { name: 'Cypress', level: 'expert' },
-        { name: 'Playwright', level: 'advanced' },
-        { name: 'LCNC Automation', level: 'advanced' },
-        { name: 'Selenium', level: 'intermediate' }
-      ]
-    },
-    {
-      icon: Code,
-      title: 'Programming',
-      color: 'from-green-500 to-green-600',
-      skills: [
-        { name: 'JavaScript', level: 'expert' },
-        { name: 'TypeScript', level: 'advanced' },
-        { name: 'SQL', level: 'intermediate' },
-        { name: 'Python', level: 'intermediate' }
-      ]
-    },
-    {
-      icon: Database,
-      title: 'API & Performance',
-      color: 'from-purple-500 to-purple-600',
-      skills: [
-        { name: 'Postman', level: 'expert' },
-        { name: 'JMeter', level: 'advanced' },
-        { name: 'REST API Testing', level: 'expert' },
-        { name: 'Load Testing', level: 'advanced' }
-      ]
-    },
-    {
-      icon: GitBranch,
-      title: 'DevOps & CI/CD',
-      color: 'from-orange-500 to-orange-600',
-      skills: [
-        { name: 'Azure DevOps', level: 'expert' },
-        { name: 'GitLab', level: 'advanced' },
-        { name: 'GitHub Actions', level: 'advanced' },
-        { name: 'SonarCloud', level: 'intermediate' }
-      ]
-    },
-    {
-      icon: Brain,
-      title: 'AI Tools',
-      color: 'from-violet-500 to-violet-600',
-      skills: [
-        { name: 'ChatGPT', level: 'expert' },
-        { name: 'Gemini', level: 'expert' },
-        { name: 'Claude', level: 'advanced' },
-        { name: 'Perplexity', level: 'advanced' }
-      ]
-    },
-    {
-      icon: Cloud,
-      title: 'Cloud Platforms',
-      color: 'from-teal-500 to-teal-600',
-      skills: [
-        { name: 'AWS', level: 'advanced' },
-        { name: 'Microsoft Azure', level: 'advanced' },
-        { name: 'Google Cloud', level: 'intermediate' }
-      ]
-    }
-  ];
-
-  const getSkillBadgeColor = (level: string) => {
-    switch (level) {
-      case 'expert': return 'bg-green-100 text-green-800 border-green-200';
-      case 'advanced': return 'bg-blue-100 text-blue-800 border-blue-200';
-      case 'intermediate': return 'bg-yellow-100 text-yellow-800 border-yellow-200';
-      default: return 'bg-gray-100 text-gray-800 border-gray-200';
-    }
-  };
 
   const certifications = [
     {
@@ -258,7 +182,7 @@ const Home = () => {
                 Senior QA Engineer
               </h2>
               <p className="text-lg text-gray-700 mb-8 leading-relaxed">
-                Results-driven QA Engineer with <strong>4+ years of experience</strong> in 
+                Results-driven QA Engineer with <strong>{getExperienceYearsLabel()}</strong> of experience in 
                 Automation Testing, API Testing, Performance Testing, and DevOps Integration. 
                 Passionate about delivering quality software through comprehensive testing strategies.
               </p>
@@ -332,7 +256,7 @@ const Home = () => {
             <p className="text-lg text-gray-600">Key achievements and certifications</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
             {highlights.map((highlight, index) => (
               <div
                 key={index}
@@ -360,7 +284,7 @@ const Home = () => {
             <div>
               <h3 className="text-2xl font-bold text-gray-900 mb-4">My Journey</h3>
               <p className="text-gray-700 leading-relaxed mb-4">
-                With over 4 years of experience in Quality Assurance, I've had the privilege of working 
+                With over {getExperienceYearsForCounter()} years of experience in Quality Assurance, I've had the privilege of working 
                 across diverse environments - from dynamic startups to established enterprises. My career 
                 began at SaleAssist.ai, where I established the foundation of QA processes from scratch.
               </p>
@@ -413,7 +337,7 @@ const Home = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">Professional Experience</h2>
-            <p className="text-lg text-gray-600">4+ years of progressive experience in Quality Assurance</p>
+            <p className="text-lg text-gray-600">{getExperienceYearsLabel()} of progressive experience in Quality Assurance</p>
           </div>
 
           {/* Timeline */}
@@ -517,161 +441,170 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Projects Showcase */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">AI-Powered Projects</h2>
-            <p className="text-lg text-gray-600">Innovative tools and applications designed to enhance testing workflows</p>
+      {/* Ruviq Products Showcase */}
+      <section
+        style={{
+          padding: '72px 0',
+          background: 'linear-gradient(160deg, #06080f 0%, #0d1428 60%, #080a18 100%)',
+          position: 'relative',
+          overflow: 'hidden',
+        }}
+      >
+        <div
+          style={{
+            position: 'absolute', top: -100, right: -100, width: 400, height: 400,
+            borderRadius: '50%',
+            background: 'radial-gradient(circle, rgba(124,58,237,0.12) 0%, transparent 70%)',
+            pointerEvents: 'none',
+          }}
+        />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" style={{ position: 'relative', zIndex: 1 }}>
+          {/* Header */}
+          <div style={{ textAlign: 'center', marginBottom: 48 }}>
+            <div
+              style={{
+                display: 'inline-flex', alignItems: 'center', gap: 8,
+                background: 'rgba(124,58,237,0.12)', border: '1px solid rgba(124,58,237,0.35)',
+                borderRadius: 30, padding: '5px 16px', marginBottom: 18,
+              }}
+            >
+              <div
+                style={{
+                  width: 20, height: 20, borderRadius: 6,
+                  background: 'linear-gradient(135deg, #7c3aed, #4f46e5)',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  fontSize: 9, fontWeight: 900, color: 'white',
+                }}
+              >R</div>
+              <span style={{ color: '#a78bfa', fontSize: 10, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase' as const }}>
+                Ruviq · My SaaS Products
+              </span>
+            </div>
+            <h2
+              style={{
+                fontSize: 'clamp(1.6rem,4vw,2.6rem)', fontWeight: 900, marginBottom: 14,
+                letterSpacing: '-1px', lineHeight: 1.1,
+                background: 'linear-gradient(135deg, #f8fafc 0%, #a78bfa 50%, #60a5fa 100%)',
+                WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
+              }}
+            >
+              My Products & SaaS Tools
+            </h2>
+            <p style={{ color: 'rgba(255,255,255,0.48)', fontSize: 15, maxWidth: 540, margin: '0 auto' }}>
+              Real-world tools built under my brand <span style={{ color: '#a78bfa', fontWeight: 600 }}>Ruviq</span> — from AI test case generators to performance testing platforms.
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {projects.map((project, index) => (
-              <div key={index} className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-                <div className={`bg-gradient-to-r ${project.gradient} p-6 text-white`}>
-                  <div className="flex items-center justify-between mb-4">
-                    <project.icon className="w-8 h-8" />
-                    <span className="px-3 py-1 bg-green-500 rounded-full text-sm">Active</span>
-                  </div>
-                  <h3 className="text-xl font-bold mb-2">{project.name}</h3>
-                  <p className="text-sm opacity-90">{project.description}</p>
-                </div>
-
-                <div className="p-6">
-                  <div className="mb-6">
-                    <div className="bg-gray-200 rounded-lg h-32 overflow-hidden mb-4">
-                      <img
-                        src={project.screenshot}
-                        alt={`${project.name} Screenshot`}
-                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                        onError={(e) => {
-                          const target = e.target as HTMLImageElement;
-                          target.style.display = 'none';
-                          const fallback = target.parentElement?.querySelector('.fallback') as HTMLElement;
-                          if (fallback) fallback.style.display = 'flex';
-                        }}
-                      />
-                      <div className="fallback hidden h-full w-full bg-gray-200 items-center justify-center">
-                        <project.icon className="w-12 h-12 text-gray-400" />
-                      </div>
+          {/* Product mini-cards grid */}
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))',
+              gap: 16,
+              marginBottom: 40,
+            }}
+          >
+            {ruviqProducts.map((p) => (
+              <Link
+                key={p.slug}
+                to={`/products/${p.slug}`}
+                style={{ textDecoration: 'none', display: 'flex' }}
+              >
+                <div
+                  style={{
+                    background: 'rgba(255,255,255,0.04)',
+                    border: `1px solid rgba(255,255,255,0.09)`,
+                    borderRadius: 16,
+                    padding: '22px 20px',
+                    backdropFilter: 'blur(10px)',
+                    transition: 'all 0.22s ease',
+                    cursor: 'pointer',
+                    position: 'relative',
+                    overflow: 'hidden',
+                    display: 'flex',
+                    flexDirection: 'column' as const,
+                    width: '100%',
+                  }}
+                  onMouseOver={(e) => {
+                    const el = e.currentTarget as HTMLDivElement;
+                    el.style.border = `1px solid ${p.color}55`;
+                    el.style.transform = 'translateY(-4px)';
+                    el.style.boxShadow = `0 18px 40px rgba(0,0,0,0.4), 0 0 30px ${p.color}20`;
+                  }}
+                  onMouseOut={(e) => {
+                    const el = e.currentTarget as HTMLDivElement;
+                    el.style.border = '1px solid rgba(255,255,255,0.09)';
+                    el.style.transform = 'translateY(0)';
+                    el.style.boxShadow = 'none';
+                  }}
+                >
+                  {/* Brand gradient top line */}
+                  <div
+                    style={{
+                      position: 'absolute', top: 0, left: 0, right: 0, height: 2,
+                      background: p.btnGradient,
+                      opacity: 0.7,
+                    }}
+                  />
+                  {/* Real product icon */}
+                  <div style={{ height: 40, marginBottom: 14, display: 'flex', alignItems: 'center' }}>
+                    <img
+                      src={p.icon}
+                      alt={p.name}
+                      style={{ height: '100%', width: 40, objectFit: 'contain', borderRadius: 10 }}
+                      onError={(e) => {
+                        const el = e.currentTarget as HTMLImageElement;
+                        el.style.display = 'none';
+                        const fb = el.nextElementSibling as HTMLElement;
+                        if (fb) fb.style.display = 'flex';
+                      }}
+                    />
+                    <div style={{
+                      display: 'none', width: 40, height: 40, borderRadius: 10, flexShrink: 0,
+                      background: `${p.color}20`, border: `1px solid ${p.color}40`,
+                      alignItems: 'center', justifyContent: 'center',
+                    }}>
+                      <span style={{ color: p.color, fontWeight: 900, fontSize: 13 }}>{p.name.slice(0, 2).toUpperCase()}</span>
                     </div>
-
-                    <h4 className="font-semibold text-gray-900 mb-3">Key Features</h4>
-                    <div className="space-y-2">
-                      {project.keyFeatures.map((feature, idx) => (
-                        <div key={idx} className="flex items-start">
-                          <div className="w-2 h-2 bg-blue-500 rounded-full mr-3 mt-2 flex-shrink-0"></div>
-                          <span className="text-gray-700 text-sm">{feature}</span>
-                        </div>
-                      ))}
-                    </div>
                   </div>
-
-                  <div className="flex gap-2">
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex-1 inline-flex items-center justify-center px-3 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors duration-200"
-                    >
-                      <Github className="w-4 h-4 mr-1" />
-                      Code
-                    </a>
-                    <a
-                      href={project.live}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex-1 inline-flex items-center justify-center px-3 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200"
-                    >
-                      <ExternalLink className="w-4 h-4 mr-1" />
-                      Demo
-                    </a>
+                  <h3 style={{ color: 'white', fontWeight: 700, fontSize: 16, marginBottom: 5 }}>{p.name}</h3>
+                  <p style={{ color: p.color, fontSize: 10, fontWeight: 600, marginBottom: 10, letterSpacing: '0.04em' }}>{p.badge}</p>
+                  <p style={{ color: 'rgba(255,255,255,0.55)', fontSize: 12.5, lineHeight: 1.65, marginBottom: 14, flex: 1 }}>{p.description}</p>
+                  <div style={{ display: 'flex', flexWrap: 'wrap' as const, gap: 5 }}>
+                    {p.tags.map((t) => (
+                      <span key={t} style={{
+                        background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)',
+                        borderRadius: 5, padding: '2px 7px', fontSize: 9.5, color: 'rgba(255,255,255,0.45)',
+                      }}>{t}</span>
+                    ))}
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
 
-          <div className="mt-12 text-center">
+          {/* CTA */}
+          <div style={{ textAlign: 'center' }}>
             <Link
-              to="/projects"
-              className="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors duration-200"
+              to="/products"
+              style={{
+                display: 'inline-flex', alignItems: 'center', gap: 8,
+                padding: '13px 28px',
+                background: 'linear-gradient(135deg, #7c3aed, #4f46e5)',
+                color: 'white', fontWeight: 700, fontSize: 14, borderRadius: 12,
+                textDecoration: 'none', boxShadow: '0 6px 24px rgba(124,58,237,0.38)',
+              }}
             >
-              View All Projects
-              <ArrowRight className="w-5 h-5 ml-2" />
+              View All Products →
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Skills Section */}
-      <section className="py-20 bg-gray-50">
+      {/* Skills Section – same component as Skills page, compact variant */}
+      <section className="py-16 bg-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Technical Skills</h2>
-            <p className="text-lg text-gray-600">Comprehensive expertise across testing frameworks, programming languages, and quality assurance tools</p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-            {skillCategories.map((category, index) => (
-              <div key={index} className="bg-white rounded-2xl shadow-lg overflow-hidden">
-                <div className={`bg-gradient-to-r ${category.color} p-6 text-white`}>
-                  <div className="flex items-center">
-                    <category.icon className="w-8 h-8 mr-3" />
-                    <h3 className="text-xl font-bold">{category.title}</h3>
-                  </div>
-                </div>
-                
-                <div className="p-6">
-                  <div className="space-y-3">
-                    {category.skills.map((skill, idx) => (
-                      <div key={idx} className="flex justify-between items-center">
-                        <span className="text-gray-900 font-medium">{skill.name}</span>
-                        <span className={`px-2 py-1 text-xs font-medium rounded-full border ${getSkillBadgeColor(skill.level)}`}>
-                          {skill.level}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Skill Legend */}
-          <div className="bg-gray-50 rounded-xl p-6 mb-8">
-            <h3 className="text-lg font-bold text-gray-900 mb-4 text-center">Proficiency Levels</h3>
-            <div className="flex flex-wrap justify-center gap-4">
-              <div className="flex items-center">
-                <span className="px-3 py-1 text-xs font-medium rounded-full border bg-green-100 text-green-800 border-green-200 mr-2">
-                  expert
-                </span>
-                <span className="text-sm text-gray-700">Advanced expertise & leadership</span>
-              </div>
-              <div className="flex items-center">
-                <span className="px-3 py-1 text-xs font-medium rounded-full border bg-blue-100 text-blue-800 border-blue-200 mr-2">
-                  advanced
-                </span>
-                <span className="text-sm text-gray-700">Proficient with complex tasks</span>
-              </div>
-              <div className="flex items-center">
-                <span className="px-3 py-1 text-xs font-medium rounded-full border bg-yellow-100 text-yellow-800 border-yellow-200 mr-2">
-                  intermediate
-                </span>
-                <span className="text-sm text-gray-700">Solid understanding & application</span>
-              </div>
-            </div>
-          </div>
-
-          <div className="text-center">
-            <Link
-              to="/skills"
-              className="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors duration-200"
-            >
-              View Detailed Skills
-              <ArrowRight className="w-5 h-5 ml-2" />
-            </Link>
-          </div>
+          <SkillsSection variant="compact" />
         </div>
       </section>
 
@@ -776,8 +709,8 @@ const Home = () => {
               <div className="w-16 h-16 bg-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Github className="w-8 h-8" />
               </div>
-              <h3 className="text-xl font-bold mb-2">View Projects</h3>
-              <p className="text-gray-300 mb-4">Explore my GitHub repositories</p>
+              <h3 className="text-xl font-bold mb-2">View Products</h3>
+              <p className="text-gray-300 mb-4">Explore my Ruviq SaaS products</p>
               <a
                 href="https://github.com/rps-rajput"
                 target="_blank"
@@ -794,7 +727,7 @@ const Home = () => {
             <h3 className="text-2xl font-bold mb-4">Professional Summary</h3>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
               <div>
-                <div className="text-3xl font-bold text-blue-400 mb-2">4+</div>
+                <div className="text-3xl font-bold text-blue-400 mb-2">{expDisplay}</div>
                 <div className="text-gray-300">Years Experience</div>
               </div>
               <div>
