@@ -2,9 +2,27 @@ import { ArrowRight, Download, Github, Linkedin, Mail, MapPin, Shield, Calendar,
 import { Link } from 'react-router-dom';
 import SkillsSection from '../components/SkillsSection';
 import { getExperienceDisplay, getExperienceYearsLabel, getExperienceYearsForCounter } from '../utils/experience';
+import { RESUME_DOWNLOAD_URL } from '../constants/resume';
+import RoleProgression from '../components/RoleProgression';
+import { SOFTWAY_PROGRESSION, SOFTWAY_SUMMARY, type SoftwayProgressionRole } from '../data/softwayCareer';
 
 const Home = () => {
   const expDisplay = getExperienceDisplay();
+
+  type ExperienceItem = {
+    company: string;
+    role: string; // current title shown on card
+    duration: string;
+    location: string;
+    type: string;
+    projects: number;
+    summary: string;
+    achievements: string[];
+    technologies: string[];
+    gradient: string;
+    progression?: SoftwayProgressionRole[];
+  };
+
   const highlights = [
     { icon: Trophy, text: `${expDisplay} Years Experience`, color: 'text-blue-600' },
     { icon: Shield, text: 'Automation & QA Specialist', color: 'text-orange-600' },
@@ -40,13 +58,16 @@ const Home = () => {
     }
   ];
 
-  const experiences = [
+  const experiences: ExperienceItem[] = [
     {
       company: 'Softway Solution Pvt. Ltd.',
-      role: 'Senior QA Engineer',
+      role: 'Software Engineer II',
       duration: 'July 2022 - Present',
       location: 'Remote',
+      type: 'Full-time',
       projects: 7,
+      summary: SOFTWAY_SUMMARY,
+      progression: SOFTWAY_PROGRESSION,
       achievements: [
         'Led automation testing for 4 major projects',
         'Improved test efficiency by 40-50%',
@@ -61,7 +82,10 @@ const Home = () => {
       role: 'QA Analyst Intern',
       duration: 'March 2022 - July 2022',
       location: 'Remote',
+      type: 'Internship',
       projects: 1,
+      summary:
+        'Focused on automation testing using Playwright and cross-browser testing methodologies, collaborating closely with developers to improve release confidence.',
       achievements: [
         'Implemented Playwright automation framework',
         'Conducted cross-browser compatibility testing',
@@ -76,7 +100,10 @@ const Home = () => {
       role: 'Quality Analyst Intern',
       duration: 'November 2021 - March 2022',
       location: 'Remote',
+      type: 'Internship',
       projects: 1,
+      summary:
+        'First QA hire responsible for establishing QA processes from scratch in a fast-growing AI startup environment.',
       achievements: [
         'Established QA processes from ground up',
         'Built automation framework with Selenium & Pytest',
@@ -197,7 +224,7 @@ const Home = () => {
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Link>
                 <a
-                  href="https://drive.google.com/uc?export=download&id=1nwKr7uXGx_97iYAbuu_zO6h6b529jj6F"
+                  href={RESUME_DOWNLOAD_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center px-6 py-3 sm:py-3 border-2 border-blue-600 text-blue-600 font-medium rounded-lg hover:bg-blue-600 hover:text-white transition-colors duration-200 min-h-[48px] w-full sm:w-auto"
@@ -369,7 +396,7 @@ const Home = () => {
                               {exp.location}
                             </div>
                             <span className="px-2 py-1 bg-white bg-opacity-20 rounded-full text-xs">
-                              Full-time
+                              {exp.type}
                             </span>
                           </div>
                         </div>
@@ -384,11 +411,11 @@ const Home = () => {
 
                     {/* Body */}
                     <div className="p-6">
-                      <p className="text-gray-700 mb-6 leading-relaxed">
-                        {index === 0 && "Leading comprehensive QA initiatives across multiple high-impact projects including Daikin enterprise tools and Code Ninjas marketing platform."}
-                        {index === 1 && "Focused on automation testing using Playwright and cross-browser testing methodologies."}
-                        {index === 2 && "First QA hire responsible for establishing quality assurance processes in a fast-growing AI startup."}
-                      </p>
+                      <p className="text-gray-700 mb-6 leading-relaxed">{exp.summary}</p>
+
+                      {exp.progression && exp.progression.length > 0 && (
+                        <RoleProgression roles={exp.progression} />
+                      )}
 
                       {/* Achievements */}
                       <div className="mb-6">
@@ -695,7 +722,7 @@ const Home = () => {
               <h3 className="text-xl font-bold mb-2">Download Resume</h3>
               <p className="text-gray-300 mb-4">View my complete professional profile</p>
               <a
-                href="https://drive.google.com/uc?export=download&id=1nwKr7uXGx_97iYAbuu_zO6h6b529jj6F"
+                href={RESUME_DOWNLOAD_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center px-6 py-3 bg-teal-600 text-white font-medium rounded-lg hover:bg-teal-700 transition-colors duration-200"

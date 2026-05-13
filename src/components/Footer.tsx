@@ -1,5 +1,6 @@
 import { Github, Linkedin, Mail, MapPin, Phone, Twitter, Instagram, ExternalLink } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { RESUME_DOWNLOAD_URL } from '../constants/resume';
 
 const PRODUCTS = [
   { name: 'Ruviq', slug: 'ruviq', url: 'https://ruviq.com/', color: '#a78bfa', external: true },
@@ -172,7 +173,7 @@ const Footer = () => {
             </Link>
             <div style={{ marginTop: 8 }}>
               <a
-                href="https://drive.google.com/uc?export=download&id=1nwKr7uXGx_97iYAbuu_zO6h6b529jj6F"
+                href={RESUME_DOWNLOAD_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{ color: 'rgba(255,255,255,0.38)', fontSize: 12.5, textDecoration: 'none', transition: 'color 0.18s' }}

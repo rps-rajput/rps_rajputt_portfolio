@@ -1,6 +1,7 @@
-import React from 'react';
-import { Calendar, MapPin, ArrowLeft, ExternalLink, Users, Target, Zap, Code, Shield, Database } from 'lucide-react';
+import { Calendar, MapPin, ArrowLeft, Users, Target, Zap, Code, Shield, Database } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import RoleProgression from '../../components/RoleProgression';
+import { SOFTWAY_PROGRESSION } from '../../data/softwayCareer';
 
 const SoftwayExperience = () => {
   const projects = [
@@ -85,7 +86,7 @@ const SoftwayExperience = () => {
         <div className="bg-gradient-to-r from-blue-500 to-blue-600 rounded-2xl p-8 text-white mb-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             <div>
-              <h1 className="text-3xl lg:text-4xl font-bold mb-4">Senior QA Engineer</h1>
+              <h1 className="text-3xl lg:text-4xl font-bold mb-4">Software Engineer II</h1>
               <h2 className="text-xl opacity-90 mb-4">Softway Solution Pvt. Ltd.</h2>
               <div className="flex flex-wrap items-center gap-4 text-sm mb-4">
                 <div className="flex items-center">
@@ -99,8 +100,8 @@ const SoftwayExperience = () => {
                 <span className="px-3 py-1 bg-white bg-opacity-20 rounded-full">Full-time</span>
               </div>
               <p className="text-lg opacity-90 leading-relaxed">
-                Leading automation initiatives and quality assurance processes across multiple enterprise-level projects, 
-                with a focus on HVAC systems and educational platforms.
+                Promoted from QA Engineer → Senior QA Engineer → Software Engineer II while leading automation,
+                API/performance testing, and AI-assisted engineering across enterprise HVAC and education platforms.
               </p>
             </div>
             
@@ -115,6 +116,10 @@ const SoftwayExperience = () => {
               </div>
             </div>
           </div>
+        </div>
+
+        <div className="mb-12 bg-white rounded-2xl shadow-lg border border-gray-100 p-6">
+          <RoleProgression roles={SOFTWAY_PROGRESSION} />
         </div>
 
         {/* Key Responsibilities */}
@@ -196,6 +201,10 @@ const SoftwayExperience = () => {
               </div>
             ))}
           </div>
+        </div>
+
+        <div className="mb-16 bg-white rounded-2xl shadow-lg border border-gray-100 p-6">
+          <RoleProgression roles={SOFTWAY_PROGRESSION} title="Career progression at Softway" />
         </div>
 
         {/* Skills Developed */}
